@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect} from 'react';
+import {useState} from "react";
+import Loading from "./components/Loading";
+import EditTable from "./components/EditTable";
 
 function App() {
+  const [data, setData] = useState(null);
+  const columns = [
+    { field: 'id', fieldName: '#' },
+    { field: 'firstName', fieldName: 'First Name' },
+    { field: 'lastName', fieldName: 'Last Name' },
+    { field: 'role', fieldName: 'User\'s role' },
+  ];
+  useEffect(() => {
+    fetch('http://localhost:8080/tableData')
+        .then(response => response.json())
+        .then(json => setData(json))
+  }, []);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>{data ? <EditTable columns = {columns} rows = {data} actions /> : <Loading />}</div>
     </div>
   );
 }

@@ -1,0 +1,22 @@
+{
+  "tableData": [
+    {
+      "firstName": "Bob",
+      "lastName": "Masonov",
+      "role": "Admin",
+      "id": 1
+    },
+    {
+      "firstName": "Ivan",
+      "lastName": "Gukov",
+      "role": "Programmer",
+      "id": 2
+    },
+    {
+      "firstName": "Dmitry",
+      "lastName": "Koval",
+      "role": "Junior Frontend Developer",
+      "id": 3
+    }
+  ]
+}
